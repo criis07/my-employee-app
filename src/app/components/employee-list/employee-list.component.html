@@ -1,0 +1,61 @@
+<div class="container">
+    <!-- Parte izquierda: Tabla de empleados -->
+    <div class="table-container">
+      <h2>Employee List</h2>
+      <table class="table">
+        <!-- Encabezado de la tabla -->
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Phone</th>
+            <th>Zip</th>
+            <th>Hire Date</th>
+          </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.employeeId }}</td>
+            <td>{{ employee.employeeLastName }}</td>
+            <td>{{ employee.employeeFirstName }}</td>
+            <td>{{ employee.employeePhone }}</td>
+            <td>{{ employee.employeeZip }}</td>
+            <td>{{ employee.hireDate | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Parte derecha: Formulario de creación de empleado -->
+    <div class="form-container">
+        <h2>Create Employee</h2>
+        <form #formRef="ngForm" (submit)="onSubmit(formRef)">
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" [(ngModel)]="newEmployee.employeeLastName" required>
+          </div>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="newEmployee.employeeFirstName" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" [(ngModel)]="newEmployee.employeePhone" required>
+          </div>
+          <div class="form-group">
+            <label for="zip">Zip:</label>
+            <input type="text" id="zip" name="zip" [(ngModel)]="newEmployee.employeeZip" required>
+          </div>
+          <div class="form-group">
+            <label for="hireDate">Hire Date:</label>
+            <input type="date" id="hireDate" name="hireDate" [(ngModel)]="newEmployee.hireDate" required>
+          </div>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+      <div class="form-container"><app-employee-search></app-employee-search></div>
+      
+  </div>
+  
